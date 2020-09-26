@@ -2,23 +2,27 @@
 
 namespace App\Controller;
 
+use Twig\Environment;
+use App\Repository\PropertyRepository;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController
+class HomeController extends AbstractController
 {
+    
+
     /**
-     *
-     * @var [environment]
+     * 
+     * @Route("/", name="home")
+     * 
+     * @return Response
      */
-    private $twig;
-
-    public function __construct($twig)
+    public function index(PropertyRepository $repository): Response
     {
-        $this->twig = $twig;
-    }
-
-    public function index(): Response
-    {
-        return new Response($this->twig->render('pages/home.html.twig'));
+        $properties = $repository->findLatest();
+        return $this->render('pages/home.html.twig', [
+            'properties' => $properties
+        ]);
     }
 }
