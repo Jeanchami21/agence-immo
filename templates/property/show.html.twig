@@ -7,7 +7,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-            
+            {% if property.filename %}
+                <img src="{{ vich_uploader_asset( property, 'imageFile') | imagine_filter('medium') }}" alt="">
+             {% else %}
+                <a href="{{ path('property.show', {slug: property.slug, id:property.id}) }}"><img src=" {{ '/images/properties/empty.jpg' | imagine_filter('medium') }}" alt="" style=""></a>
+            {% endif %}
             </div>
             <div class="col-md-4">
                 <h1>{{ property.title }}</h1>

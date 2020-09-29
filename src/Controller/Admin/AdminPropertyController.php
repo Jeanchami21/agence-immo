@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller\Admin;
 
-use App\Entity\Option;
+
 use App\Entity\Property;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
@@ -95,7 +95,7 @@ class AdminPropertyController extends AbstractController {
             $this->em->remove($property);
             $this->em->flush();
             $this->addFlash('success','Bien supprimé avec succès');
-        return new Response('Suppression');
+      
         }
        
         return $this->redirectToRoute('admin.property.index');
