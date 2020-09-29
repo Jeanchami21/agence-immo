@@ -1,9 +1,9 @@
 <div class="card mb-4">
 {% if property.filename %}
-  <a href="{{ path('property.show', {slug: property.slug, id:property.id}) }}"><img src=" {{ vich_uploader_asset( property, 'imageFile') | imagine_filter('thumb') }}" alt="" style=""></a>
+  <a href="{{ path('property.show', {slug: property.slug, id:property.id}) }}"><img src=" {{ vich_uploader_asset( property, 'imageFile') | imagine_filter('thumb') }}" alt="" style="width: 100%; height: auto"></a>
 
   {% else %}
-     <a href="{{ path('property.show', {slug: property.slug, id:property.id}) }}"><img src=" {{ '/images/properties/empty.jpg' | imagine_filter('thumb') }}" alt="" style=""></a>
+     <a href="{{ path('property.show', {slug: property.slug, id:property.id}) }}"><img src=" {{ '/images/properties/empty.jpg' | imagine_filter('thumb') }}" alt="" style="width: 100%; height: auto"></a>
 {% endif %}
     <div class="card-body">
       <h5 class="card-title">
